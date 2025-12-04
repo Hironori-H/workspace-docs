@@ -97,9 +97,11 @@ Claude Code 起動後、以下のプロンプトで作業前提条件ドキュ�
 **起動方法**: `claude --model opus` または `claude-maintainer`
 **理由**: Workspace全体の構造管理・戦略的判断には最高品質のモデルが必要
 
+##### 統合版（全内容を一度に読み込む）
+
 ```
 以下のドキュメントを確認してください。確認後、指示を待ってください。
-/Users/hiraihironori/Desktop/WorkSpace/DOCS/作業前提条件_Maintainer_v1.2.md
+/Users/hiraihironori/Desktop/WorkSpace/DOCS/作業前提条件_Maintainer_v1.6.md
 
 【重要】あなたはMaintainerです。
 - Workspace全体の構造管理・整理を担当します
@@ -109,24 +111,44 @@ Claude Code 起動後、以下のプロンプトで作業前提条件ドキュ�
 - アーカイブ、ドキュメント整備、改善提案が主な作業です
 ```
 
+##### 分割版（トークン効率重視）
+
+```
+あなたはMaintainerです。'/Users/hiraihironori/Desktop/WorkSpace/DOCS/作業前提条件/Maintainer_v1.6'このドキュメントを読んで作業して下さい。
+```
+
+**メリット**:
+- トークン使用量を大幅削減（必要なモジュールのみ読み込み）
+- 作業内容に応じて自動的に必要なモジュールを判定
+- 00_INDEX.mdが作業タイプ別のナビゲーションを提供
+
 #### Reviewer（レビュー担当）として作業する場合
 
 **推奨モデル**: Opus
 **起動方法**: `claude --model opus` または `claude-reviewer`
 **理由**: 高品質なレビュー・細かい問題発見・的確な修正指示には最高品質のモデルが必要
 
-```
-以下のドキュメントを確認してください。
+##### 統合版（全内容を一度に読み込む）
 
-/Users/hiraihironori/Desktop/WorkSpace/DOCS/作業前提条件_Reviewer.md
+```
+以下のドキュメントを確認してください。確認後、指示を待ってください。
+/Users/hiraihironori/Desktop/WorkSpace/DOCS/作業前提条件_Reviewer_v1.7.md
 
 【重要】あなたはReviewerです。
 - 直接コード修正は行わず、必ず修正指示ドキュメントを作成してください
 - 「修正を実施してください」と言われた場合も、修正指示ドキュメントを作成し、Workerに依頼してください
 - コード修正はWorkerの役割です
-
-確認後、指示を待ってください。
 ```
+
+##### 分割版（トークン効率重視）
+
+```
+あなたはReviewerです。'/Users/hiraihironori/Desktop/WorkSpace/DOCS/作業前提条件/Reviewer_v1.7'このドキュメントを読んで作業して下さい。
+```
+
+**メリット**:
+- トークン使用量を大幅削減（必要なモジュールのみ読み込み）
+- レビュー作業に必要な情報だけを効率的に取得
 
 #### Worker（実装・作業担当）として作業する場合
 
@@ -134,10 +156,22 @@ Claude Code 起動後、以下のプロンプトで作業前提条件ドキュ�
 **起動方法**: `claude --model sonnet` または `claude-worker`
 **理由**: コスパ最高・実装能力十分・速度が速い・頻繁に使用する作業に最適
 
+##### 統合版（全内容を一度に読み込む）
+
 ```
 以下のドキュメントを確認してください。確認後、指示を待ってください。
-/Users/hiraihironori/Desktop/WorkSpace/DOCS/作業前提条件_Worker.md
+/Users/hiraihironori/Desktop/WorkSpace/DOCS/作業前提条件_Worker_v2.9.md
 ```
+
+##### 分割版（トークン効率重視）
+
+```
+あなたはWorkerです。'/Users/hiraihironori/Desktop/WorkSpace/DOCS/作業前提条件/Worker_v2.9'このドキュメントを読んで作業して下さい。
+```
+
+**メリット**:
+- トークン使用量を大幅削減（必要なモジュールのみ読み込み）
+- 実装作業に必要な規約だけを効率的に取得
 
 #### 複数の役割で作業する場合
 
@@ -147,14 +181,22 @@ Claude Code 起動後、以下のプロンプトで作業前提条件ドキュ�
 **起動方法**: `claude --model opus`
 **理由**: レビュー品質を優先（レビュー→修正指示→Worker実装の流れ）
 
+##### 統合版
+
 ```
 以下のドキュメントを確認してください。確認後、指示を待ってください。
-/Users/hiraihironori/Desktop/WorkSpace/DOCS/作業前提条件_Reviewer.md
-/Users/hiraihironori/Desktop/WorkSpace/DOCS/作業前提条件_Worker.md
+/Users/hiraihironori/Desktop/WorkSpace/DOCS/作業前提条件_Reviewer_v1.7.md
+/Users/hiraihironori/Desktop/WorkSpace/DOCS/作業前提条件_Worker_v2.9.md
 
 【重要】あなたはReviewerとWorkerの両方の役割を担当します。
 - レビュー時は修正指示ドキュメントを作成（Reviewer）
 - 実装時は修正指示に従って実装（Worker）
+```
+
+##### 分割版
+
+```
+あなたはReviewerとWorkerです。'/Users/hiraihironori/Desktop/WorkSpace/DOCS/作業前提条件/Reviewer_v1.7'と'/Users/hiraihironori/Desktop/WorkSpace/DOCS/作業前提条件/Worker_v2.9'を読んで作業して下さい。
 ```
 
 **Maintainer + Worker の役割**:
@@ -163,14 +205,22 @@ Claude Code 起動後、以下のプロンプトで作業前提条件ドキュ�
 **起動方法**: `claude --model opus`
 **理由**: Workspace全体の構造管理・戦略的判断を優先（分析→提案→実装の流れ）
 
+##### 統合版
+
 ```
 以下のドキュメントを確認してください。確認後、指示を待ってください。
-/Users/hiraihironori/Desktop/WorkSpace/DOCS/作業前提条件_Maintainer_v1.2.md
-/Users/hiraihironori/Desktop/WorkSpace/DOCS/作業前提条件_Worker.md
+/Users/hiraihironori/Desktop/WorkSpace/DOCS/作業前提条件_Maintainer_v1.6.md
+/Users/hiraihironori/Desktop/WorkSpace/DOCS/作業前提条件_Worker_v2.9.md
 
 【重要】あなたはMaintainerとWorkerの両方の役割を担当します。
 - 全体管理・整理時はWorkspace全体を把握（Maintainer）
 - 実装時は具体的な作業を実施（Worker）
+```
+
+##### 分割版
+
+```
+あなたはMaintainerとWorkerです。'/Users/hiraihironori/Desktop/WorkSpace/DOCS/作業前提条件/Maintainer_v1.6'と'/Users/hiraihironori/Desktop/WorkSpace/DOCS/作業前提条件/Worker_v2.9'を読んで作業して下さい。
 ```
 
 **全ての役割（Maintainer + Reviewer + Worker）**:
@@ -179,17 +229,25 @@ Claude Code 起動後、以下のプロンプトで作業前提条件ドキュ�
 **起動方法**: `claude --model opus`
 **理由**: 全ての役割を担うため、最高品質のモデルが必要（分析・レビュー・実装の全工程）
 
+##### 統合版
+
 ```
 以下のドキュメントを確認してください。確認後、指示を待ってください。
-/Users/hiraihironori/Desktop/WorkSpace/DOCS/作業前提条件_Maintainer_v1.2.md
-/Users/hiraihironori/Desktop/WorkSpace/DOCS/作業前提条件_Reviewer.md
-/Users/hiraihironori/Desktop/WorkSpace/DOCS/作業前提条件_Worker.md
+/Users/hiraihironori/Desktop/WorkSpace/DOCS/作業前提条件_Maintainer_v1.6.md
+/Users/hiraihironori/Desktop/WorkSpace/DOCS/作業前提条件_Reviewer_v1.7.md
+/Users/hiraihironori/Desktop/WorkSpace/DOCS/作業前提条件_Worker_v2.9.md
 
 【重要】あなたは全ての役割を担当します。
 - Maintainer: Workspace全体の構造管理・整理
 - Reviewer: レビュー・評価（修正指示ドキュメント作成）
 - Worker: 実装・作業（修正指示に従った実装）
 - 状況に応じて適切な役割を切り替えて作業してください
+```
+
+##### 分割版
+
+```
+あなたはMaintainer、Reviewer、Workerの全ての役割を担当します。'/Users/hiraihironori/Desktop/WorkSpace/DOCS/作業前提条件/Maintainer_v1.6'、'/Users/hiraihironori/Desktop/WorkSpace/DOCS/作業前提条件/Reviewer_v1.7'、'/Users/hiraihironori/Desktop/WorkSpace/DOCS/作業前提条件/Worker_v2.9'を読んで作業して下さい。
 ```
 
 #### メリット
@@ -526,10 +584,16 @@ DOCS/作業前提条件_Worker.mdに従って、[作業内容]を実施してく
 
 ---
 
-**最終更新日**: 2025年11月24日
-**バージョン**: 1.8
+**最終更新日**: 2025年12月04日
+**バージョン**: 1.9
 
 ## 変更履歴
+- **v1.9** (2025-12-04): 分割版ドキュメントの簡潔な指示文を追加
+  - 全ての役割（Maintainer/Reviewer/Worker）に統合版・分割版の両方の指示文を追加
+  - 分割版は1行の簡潔なプロンプトで使用可能
+  - 複数役割（Reviewer+Worker、Maintainer+Worker、全役割）にも統合版・分割版を追加
+  - バージョン番号を最新版に更新（Maintainer v1.6、Reviewer v1.7、Worker v2.9）
+  - 分割版のメリット（トークン効率化）を明記
 - **v1.8** (2025-11-24): トークン使用状況確認機能を追加
   - 「## 13. トークン使用状況の確認」セクションを新規追加
   - `/token-usage` スラッシュコマンドの説明を追加
