@@ -1,4 +1,4 @@
-# Maintainer用 作業前提条件 - INDEX v1.5
+# Maintainer用 作業前提条件 - INDEX v1.6
 
 ## 📌 このドキュメントについて
 
@@ -8,8 +8,8 @@
 
 ## 📝 変更履歴
 
-- **v1.5** (2025-11-24): 分割版同期 - ハルシネーション・暴走抑止定義を大幅強化
-  - 統合版v1.5の内容を分割版に反映
+- **v1.6** (2025-11-24): 分割版同期 - ハルシネーション・暴走抑止定義を大幅強化
+  - 統合版v1.6の内容を分割版に反映
   - 新規ファイル: `03_ハルシネーション抑止とベストプラクティス.md`
   - 「擬人化・感情表現の厳禁」サブセクションを追加
   - 「指示なし実装・暴走の厳禁」サブセクションを追加
@@ -109,7 +109,7 @@ Maintainerは、Workspace全体の管理・整理、ドキュメント体系の�
 ```
 Claude Codeに以下のように指示：
 
-DOCS/作業前提条件/Maintainer_v1.3/00_QUICK_REFERENCE.mdと
+DOCS/作業前提条件/Maintainer_v1.6/00_QUICK_REFERENCE.mdと
 02_Workspace管理.mdを読んで、20251101-20251110のフォルダをアーカイブして
 ```
 
@@ -118,7 +118,7 @@ DOCS/作業前提条件/Maintainer_v1.3/00_QUICK_REFERENCE.mdと
 ```
 Claude Codeに以下のように指示：
 
-DOCS/作業前提条件/Maintainer_v1.3/00_QUICK_REFERENCE.mdと
+DOCS/作業前提条件/Maintainer_v1.6/00_QUICK_REFERENCE.mdと
 04_ドキュメント管理.mdを読んで、Worker用ドキュメントのバージョン2.8を作成して
 ```
 
@@ -127,7 +127,7 @@ DOCS/作業前提条件/Maintainer_v1.3/00_QUICK_REFERENCE.mdと
 ```
 Claude Codeに以下のように指示：
 
-DOCS/作業前提条件/Maintainer_v1.3/00_QUICK_REFERENCE.mdと
+DOCS/作業前提条件/Maintainer_v1.6/00_QUICK_REFERENCE.mdと
 05_改善提案と分析.mdを読んで、作業ログ簡素化の提案書を作成して
 ```
 
@@ -183,12 +183,12 @@ Maintainerは個別の実装を行わず、Worker/Reviewerが作業しやすい�
 
 ## 🔗 関連ドキュメント
 
-- **統合版**: `DOCS/作業前提条件_Maintainer_v1.3.md`（全内容を1ファイルで確認したい場合）
+- **統合版**: `DOCS/作業前提条件_Maintainer_v1.6.md`（全内容を1ファイルで確認したい場合）
 - **VERSION.md**: `DOCS/作業前提条件/VERSION.md`（バージョン情報）
 - **利用ガイド**: `DOCS/作業前提条件/利用ガイド.md`（分割版の使い方）
 
 ---
 
-**最終更新日**: 2025年11月24日
-**バージョン**: 1.5
-**対応する統合版**: v1.5
+**最終更新日: 2025年12月04日
+**バージョン: 1.6
+**対応する統合版**: v1.6
