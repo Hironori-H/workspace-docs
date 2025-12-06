@@ -3,7 +3,7 @@
 **プロジェクト名**: After Effects / Unreal Engine 自動化システム
 **開始日**: 2025年11月
 **管理者**: ユーザー様 + Claude Code
-**最終更新日**: 2025年11月17日
+**最終更新日**: 2025年12月06日
 
 ---
 
@@ -57,39 +57,79 @@
 
 ```
 workspace/
-├── DOCS/                        # ドキュメント管理フォルダ
-│   ├── README.md               # このファイル（プロジェクト概要）
-│   ├── FAQ.md                  # よくある質問
-│   ├── 用語集.md                # プロジェクト固有の用語
-│   ├── 作業前提条件_Worker.md   # Worker（実装担当）用ガイド
-│   ├── 作業前提条件_Reviewer.md # Reviewer（レビュー担当）用ガイド
-│   └── 作業前提条件_Maintainer.md # Maintainer（管理担当）用ガイド
+├── DOCS/                            # ドキュメント管理フォルダ
+│   ├── README.md                   # このファイル（プロジェクト概要）
+│   │
+│   ├── 作業前提条件/                # Claude Code用作業マニュアル
+│   │   ├── 作業前提条件_README.md  # 作業前提条件フォルダの説明
+│   │   ├── Worker_v2.9/            # Worker用分割版
+│   │   ├── Reviewer_v1.7/          # Reviewer用分割版
+│   │   ├── Maintainer_v1.6/        # Maintainer用分割版
+│   │   ├── 作業前提条件_Worker_v2.9.md      # Worker用統合版
+│   │   ├── 作業前提条件_Reviewer_v1.7.md    # Reviewer用統合版
+│   │   ├── 作業前提条件_Maintainer_v1.6.md  # Maintainer用統合版
+│   │   ├── VERSION.md              # バージョン情報
+│   │   └── changelog/              # 更新履歴
+│   │
+│   ├── Project/                    # プロジェクト固有の管理情報
+│   │   ├── Project_README.md       # Projectフォルダの説明
+│   │   ├── 用語集.md                # プロジェクト固有の用語
+│   │   ├── 依存関係図.md            # システム構成・技術スタック
+│   │   ├── 役割別業務早見表_v2.md   # 役割別業務フロー
+│   │   ├── Claude_Code会話履歴抽出方法.md
+│   │   └── Obsidianドキュメント標準化ガイド.md
+│   │
+│   ├── Reference/                  # 技術リファレンス（ユーザー用）
+│   │   ├── Reference_README.md     # Referenceフォルダの説明
+│   │   ├── クイックリファレンス_PowerShell.md
+│   │   ├── コーディング規約_PowerShell.md
+│   │   ├── コマンドリファレンス_ログ保存.md
+│   │   └── Reviewer_クイックリファレンス.md
+│   │
+│   ├── faq/                        # FAQ・トラブルシューティング
+│   ├── templates/                  # テンプレート集
+│   ├── Legacy/                     # 旧バージョンドキュメント
+│   └── Claude_プロンプトテンプレート.md
 │
-├── batch_file/                 # 共通スクリプト・バッチファイル
-│   ├── templates/              # テンプレート集
-│   └── *.bat, *.ps1            # 実行スクリプト
+├── batch_file/                     # 共通スクリプト・バッチファイル
+│   ├── templates/                  # テンプレート集
+│   └── *.bat, *.ps1                # 実行スクリプト
 │
-├── database_difinition/        # データベース定義
+├── database_difinition/            # データベース定義
 │   ├── AEA_DB設計書.md
 │   └── AEA_DB_setup.sql
 │
-├── usecase_difinition/         # ユースケース定義
+├── usecase_difinition/             # ユースケース定義
 │   ├── AS-IS_TO-BE_業務可視化.md
 │   └── デザイナー作業効率化アイディア集.txt
 │
-├── archive/                    # アーカイブ（過去の作業フォルダ）
+├── archive/                        # アーカイブ（過去の作業フォルダ）
 │   └── YYYY/MM-MonthName/YYYYMMDD/
 │
-└── YYYYMMDD/                   # 日付別作業フォルダ
-    ├── YYYYMMDD_worklog.md    # 作業ログ（必須）
-    ├── reject_file/            # 却下されたファイル
-    └── *.md, *.py, *.bat       # 作業成果物
+└── YYYYMMDD/                       # 日付別作業フォルダ
+    ├── YYYYMMDD_worklog.md        # 作業ログ（必須）
+    ├── reject_file/                # 却下されたファイル
+    └── *.md, *.py, *.bat           # 作業成果物
 ```
 
 ### フォルダの役割
 
-#### 固定フォルダ
-- **DOCS/**: プロジェクト全体のドキュメント管理
+#### DOCS/配下のフォルダ構成（2025-12-06更新）
+
+- **作業前提条件/**: Claude Code専用の作業マニュアル
+  - Worker/Reviewer/Maintainerの3役割の業務ガイド
+  - 統合版（1ファイル）と分割版（モジュール単位）を提供
+
+- **Project/**: プロジェクト固有の管理情報
+  - 用語集、依存関係図、役割別業務早見表
+  - ツール操作ガイド、標準化ガイド
+
+- **Reference/**: 技術リファレンス（ユーザー用）
+  - クイックリファレンス、コーディング規約
+  - ユーザーがコーディング・Git管理時に参照
+
+#### その他の固定フォルダ
+
 - **batch_file/**: 共通で使用するスクリプト・バッチファイル
 - **database_difinition/**: データベース設計・定義ファイル
 - **usecase_difinition/**: ユースケース・業務分析ドキュメント
@@ -246,11 +286,26 @@ psql -U postgres -d AEA_DB -f database_difinition/AEA_DB_setup.sql
 ## リンク・参考資料
 
 ### 内部ドキュメント
-- [作業前提条件_Worker.md](作業前提条件_Worker.md)
-- [作業前提条件_Reviewer.md](作業前提条件_Reviewer.md)
-- [作業前提条件_Maintainer.md](作業前提条件_Maintainer.md)
-- [FAQ.md](FAQ.md)
-- [用語集.md](用語集.md)
+
+#### DOCS/作業前提条件/
+- [作業前提条件_README.md](作業前提条件/作業前提条件_README.md)
+- [作業前提条件_Worker_v2.9.md](作業前提条件_Worker_v2.9.md)
+- [作業前提条件_Reviewer_v1.7.md](作業前提条件_Reviewer_v1.7.md)
+- [作業前提条件_Maintainer_v1.6.md](作業前提条件_Maintainer_v1.6.md)
+- [VERSION.md](作業前提条件/VERSION.md)
+
+#### DOCS/Project/
+- [Project_README.md](Project/Project_README.md)
+- [用語集.md](Project/用語集.md)
+- [依存関係図.md](Project/依存関係図.md)
+- [役割別業務早見表_v2.md](Project/役割別業務早見表_v2.md)
+
+#### DOCS/Reference/
+- [Reference_README.md](Reference/Reference_README.md)
+- [クイックリファレンス・コーディング規約各種](Reference/)
+
+#### その他
+- [FAQ](faq/)
 
 ### 外部リンク
 - [Adobe After Effects Scripting Guide](https://ae-scripting.docsforadobe.dev/)
@@ -280,5 +335,23 @@ psql -U postgres -d AEA_DB -f database_difinition/AEA_DB_setup.sql
 
 ---
 
-**最終更新日**: 2025年11月17日
-**バージョン**: 1.0
+## 更新履歴
+
+### v1.1 (2025-12-06)
+- **DOCS構造の整理**
+  - `DOCS/Project/` フォルダを新設（プロジェクト固有の管理情報）
+  - `DOCS/Reference/` を技術リファレンス専用に純化
+  - 各フォルダにREADME.mdを追加（40_Referenceスタイルを参照）
+- **ファイル移動**
+  - 用語集、依存関係図、役割別業務早見表 → `Project/`へ移動
+  - Claude_Code会話履歴抽出方法、Obsidianドキュメント標準化ガイド → `Project/`へ移動
+  - クイックリファレンス・コーディング規約（一部）→ Obsidian/My_Wisdom/40_Reference/へ移動（予定）
+
+### v1.0 (2025-11-17)
+- 初版作成
+- 基本的なWorkspace構造の確立
+
+---
+
+**最終更新日**: 2025年12月06日
+**バージョン**: 1.1
